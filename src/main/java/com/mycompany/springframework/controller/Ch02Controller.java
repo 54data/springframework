@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,17 +30,19 @@ public class Ch02Controller {
 	private static final Logger logger = LoggerFactory.getLogger(Ch02Controller.class);
 	
 	@RequestMapping("/getMethod")
-	public String getMethod() {
+	public String getMethod(Model model) {
 		log.info("실행");
+		model.addAttribute("chNum", "ch02");
 		return "ch02/getMethod";
 	}
 	
 	//@RequestMapping(value="/getAtag", method=RequestMethod.GET)
 	@GetMapping("/getAtag")
-	public String getAtag(String bno, String bkind) {
+	public String getAtag(String bno, String bkind, Model model) {
 		log.info("실행");
 		log.info("bno: " + bno);
 		log.info("bkind: " + bkind);
+		model.addAttribute("chNum", "ch02");
 		return "ch02/getMethod";
 	}
 	
@@ -52,32 +55,36 @@ public class Ch02Controller {
 	}
 	
 	@GetMapping("/getLocationHref")
-	public String getLocationHref(String bno, String bkind) {
+	public String getLocationHref(String bno, String bkind, Model model) {
 		log.info("실행");
 		log.info("bno: " + bno);
 		log.info("bkind: " + bkind);
+		model.addAttribute("chNum", "ch02");
 		return "ch02/getMethod"; 
 	}
 	
 	@GetMapping("/getAjax1")
-	public String getAjax1(String bno, String bkind) {
+	public String getAjax1(String bno, String bkind, Model model) {
 		log.info("실행");
 		log.info("bno: " + bno);
 		log.info("bkind: " + bkind);
+		model.addAttribute("chNum", "ch02");
 		return "ch02/ajaxFragmentHtml"; 
 	}
 	
 	@GetMapping("/getAjax2")
-	public String getAjax2(String bno, String bkind) {
+	public String getAjax2(String bno, String bkind, Model model) {
 		log.info("실행");
 		log.info("bno: " + bno);
 		log.info("bkind: " + bkind);
+		model.addAttribute("chNum", "ch02");
 		return "ch02/ajaxJSON"; 
 	}
 	
 	@GetMapping("/postMethod")
-	public String postMethod() {
+	public String postMethod(Model model) {
 		log.info("실행");
+		model.addAttribute("chNum", "ch02");
 		return "ch02/postMethod";
 	}
 	
@@ -90,18 +97,20 @@ public class Ch02Controller {
 	}
 	
 	@PostMapping("/postAjax1")
-	public String postAjax1(String bno, String bkind) {
+	public String postAjax1(String bno, String bkind, Model model) {
 		log.info("실행");
 		log.info("bno: " + bno);
 		log.info("bkind: " + bkind);
+		model.addAttribute("chNum", "ch02");
 		return "ch02/ajaxFragmentHtml"; // 홈으로 돌아가게 됨 
 	}
 	
 	@PostMapping("/postAjax2")
-	public String postAjax2(String bno, String bkind) {
+	public String postAjax2(String bno, String bkind, Model model) {
 		log.info("실행");
 		log.info("bno: " + bno);
 		log.info("bkind: " + bkind);
+		model.addAttribute("chNum", "ch02");
 		return "ch02/ajaxJSON"; 
 	}
 	
@@ -114,6 +123,7 @@ public class Ch02Controller {
 		mav.addObject("mid", "user1"); // jsp에서 사용할 데이터
 		mav.addObject("memail", "user1@mycompany.com"); // jsp에서 사용할 데이터
 		mav.setViewName("ch02/returnModelAndView"); // 실행할 jsp 파일 찾을 때 사용
+		mav.addObject("chNum", "ch02");
 		return mav;
 	}
 	
@@ -145,20 +155,22 @@ public class Ch02Controller {
 		Ch02LoginResult obj = new Ch02LoginResult();
 		obj.setResult("success");
 		obj.setMid("user1");		
-		
+
 		return obj;
 	}
 		
 	@LoginCheck
 	@GetMapping("/mypage")
-	public String mypage() {
+	public String mypage(Model model) {
 		log.info("실행");
+		model.addAttribute("chNum", "ch02");
 		return "ch02/mypage";
 	}
 	
 	@GetMapping("/loginForm")
-	public String loginForm() {
+	public String loginForm(Model model) {
 		log.info("실행");
+		model.addAttribute("chNum", "ch02");
 		return "ch02/loginForm";
 	}
 	
