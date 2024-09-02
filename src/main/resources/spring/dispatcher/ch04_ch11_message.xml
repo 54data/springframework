@@ -4,6 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<!-- ResourceBundleMessageSource는 어노테이션 방식으로는 관리 객체를 만들 수 없기 때문에 xml로 하는 것 -->
 		<property name="basenames">
 			<list>
 				<value>message/ch04_error</value>
