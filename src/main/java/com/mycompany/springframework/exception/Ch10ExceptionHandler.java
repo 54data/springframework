@@ -8,8 +8,8 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Component
-@ControllerAdvice
+//@Component 예외 처리 하지 않도록 주석
+//@ControllerAdvice
 @Slf4j
 public class Ch10ExceptionHandler {
 	@ExceptionHandler(NullPointerException.class)
