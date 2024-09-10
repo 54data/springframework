@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <div class="accordion" id="accordionExample">
 
@@ -241,6 +242,50 @@
         	<li><a href="${pageContext.request.contextPath}/ch14/around">메소드 호출 전후에 공통 코드 실행</a></li>      	
         	<li><a href="${pageContext.request.contextPath}/ch14/boardList">AOP 사례 : 실행 시간 측정</a></li>      	
         	<li><a href="${pageContext.request.contextPath}/ch14/writeBoardForm">AOP 사례 : 로그인 체크</a></li>      	
+      	</ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button ${chNum=='ch15'?'':'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#ch15" aria-expanded="${chNum=='ch15'}" aria-controls="ch15">
+      	Ch15. Transaction 처리
+      </button>
+    </h2>
+    <div id="ch15" class="accordion-collapse collapse ${chNum=='ch15'?'show':''}" data-bs-parent="#accordionMenu">
+      <div class="accordion-body">
+      	<ul>
+        	<li><a href="${pageContext.request.contextPath}/ch15/accountList">계좌 이체하기</a></li>  	
+      	</ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button ${chNum=='ch17'?'':'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#ch17" aria-expanded="${chNum=='ch17'}" aria-controls="ch17">
+      	Ch17. 스프링 시큐리티
+      </button>
+    </h2>
+    <div id="ch17" class="accordion-collapse collapse ${chNum=='ch17'?'show':''}" data-bs-parent="#accordionMenu">
+      <div class="accordion-body">
+      	<ul>
+        	<li>
+				<sec:authorize access="isAnonymous()"> <!-- 로그인을 하지 않았을 경우 -->
+					<a href="${pageContext.request.contextPath}/ch17/loginForm">로그인</a>
+				</sec:authorize>
+		
+				<sec:authorize access="isAuthenticated()">
+					<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+				</sec:authorize>
+        	</li>  	
+        	<li>
+        		<a href="${pageContext.request.contextPath}/ch17/authorityCheck">권한별 내용보기</a>
+        	</li>
+        	<li>
+        		<a href="${pageContext.request.contextPath}/ch17/userInfo">로그인한 사용자 정보보기</a>
+        	</li>
       	</ul>
       </div>
     </div>

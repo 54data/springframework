@@ -8,7 +8,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 import lombok.extern.slf4j.Slf4j;
 
-//@Component 예외 처리 하지 않도록 주석
+//@Component
 //@ControllerAdvice
 @Slf4j
 public class Ch10ExceptionHandler {
@@ -30,5 +30,11 @@ public class Ch10ExceptionHandler {
 	@ExceptionHandler(NoHandlerFoundException.class)
 	public String handleException() {
 		return "ch10/404";
+	}
+	
+	@ExceptionHandler(Ch15AccountNotExistException.class)
+	public String handleCh15AccountNotExistException(Ch15AccountNotExistException e, Model model) {
+		model.addAttribute("errorMessage", e.getMessage());
+		return "ch15/accountNotExistException";
 	}
 }
